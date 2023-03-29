@@ -3,13 +3,16 @@ const menuMobile = document.querySelector('.menu');
 const DesktopMenu = document.querySelector('.desktop-menu');
 const VersMobile = document.querySelector('.mobile-menu');
 const menuCarroComras = document.querySelector('.navbar-shopping-cart');
-const detallesProducto = document.querySelector('.product-detail');
+const detallesCompras = document.querySelector('#ShoppingAside');
 const listaProductos = document.querySelector('.cards-container');
+const detallesProductos = document.querySelector('#descriptionProduct');
+
+
 
 menuEmail.addEventListener('click', toggleDesktopMenu)
 
 function toggleDesktopMenu(){
-    detallesProducto.classList.add('inactive')
+    detallesCompras.classList.add('inactive')
     DesktopMenu.classList.toggle("inactive");
 
 }
@@ -17,7 +20,7 @@ function toggleDesktopMenu(){
 menuMobile.addEventListener('click', toggleMobileMenu)
 function toggleMobileMenu(){
     
-    detallesProducto.classList.add('inactive')
+    detallesCompras.classList.add('inactive')
     VersMobile.classList.toggle("inactive");
 }
 
@@ -25,8 +28,10 @@ menuCarroComras.addEventListener('click',toggleDetailsCarro)
 function toggleDetailsCarro(){
     DesktopMenu.classList.add('inactive')
     VersMobile.classList.add('inactive')
-    detallesProducto.classList.toggle('inactive')
+    detallesCompras.classList.toggle('inactive')
 }
+
+
 
 const productList = [];
 productList.push({
@@ -92,3 +97,10 @@ function addProduct(arrayList){
 
 addProduct(productList)
 
+const TargetaProduct = document.querySelector('.product-card');
+
+TargetaProduct.addEventListener('click',toggleDecriptionProduct)
+function toggleDecriptionProduct(){
+
+    detallesProductos.classList.toggle('inactive')
+}
