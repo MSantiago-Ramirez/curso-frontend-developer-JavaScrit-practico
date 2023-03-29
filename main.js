@@ -6,32 +6,48 @@ const menuCarroComras = document.querySelector('.navbar-shopping-cart');
 const detallesCompras = document.querySelector('#ShoppingAside');
 const listaProductos = document.querySelector('.cards-container');
 const detallesProductos = document.querySelector('#descriptionProduct');
+const productDetailClose = document.querySelector('.product-detail-close');
 
 
 
 menuEmail.addEventListener('click', toggleDesktopMenu)
 
 function toggleDesktopMenu(){
-    detallesCompras.classList.add('inactive')
+    detallesProductos.classList.add('inactive');
+    detallesCompras.classList.add('inactive');
     DesktopMenu.classList.toggle("inactive");
+   
 
 }
 
 menuMobile.addEventListener('click', toggleMobileMenu)
 function toggleMobileMenu(){
-    
+
+    detallesProductos.classList.add('inactive');
     detallesCompras.classList.add('inactive')
     VersMobile.classList.toggle("inactive");
 }
 
 menuCarroComras.addEventListener('click',toggleDetailsCarro)
 function toggleDetailsCarro(){
+    detallesProductos.classList.add('inactive');
     DesktopMenu.classList.add('inactive')
     VersMobile.classList.add('inactive')
     detallesCompras.classList.toggle('inactive')
 }
 
+function openProduct(){
+    detallesCompras.classList.add('inactive')
+    DesktopMenu.classList.add('inactive')
+    VersMobile.classList.add('inactive')
+    detallesProductos.classList.remove('inactive')
+    }
 
+
+productDetailClose.addEventListener('click', closeDetail)
+function closeDetail(){
+    detallesProductos.classList.add('inactive')
+}
 
 const productList = [];
 productList.push({
@@ -50,6 +66,8 @@ productList.push({
     imagen: "https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
 });
 
+
+
 function addProduct(arrayList){
     for(producto of productList){
         var productCard = document.createElement('div');
@@ -59,6 +77,7 @@ function addProduct(arrayList){
     
         var productImg = document.createElement('img');
         productImg.setAttribute('src',producto.imagen);
+        productImg.addEventListener('click', openProduct)
     
     
         var productInfo = document.createElement('div');
@@ -97,10 +116,3 @@ function addProduct(arrayList){
 
 addProduct(productList)
 
-const TargetaProduct = document.querySelector('.product-card');
-
-TargetaProduct.addEventListener('click',toggleDecriptionProduct)
-function toggleDecriptionProduct(){
-
-    detallesProductos.classList.toggle('inactive')
-}
